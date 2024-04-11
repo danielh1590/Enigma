@@ -2,8 +2,8 @@ INPUT_ROLLS = ["EKMFLGDQVZNTOWYHXUSPAIBRCJ", "AJDKSIRUXBLHWTMCQGZNPYFVOE",
                "BDFHJLCPRTXVZNYEIWGAKMUSQO", "ESOVPZJAYQUIRHXLNFTGKDCMWB",
                "VZBRGITYUPSDNHLXAWMJQOFECK"]
 OUTPUT_ROLLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-UKW = ["EJMZALYXVBWFCRQUONTSPIKHGD", "YRUHQSLDPXNGOKMIEBFZCWVJAT",
-       "FVPJIAOYEDRZXWGCTKUQSBNMHL"]
+REVERSING_ROLLS = ["EJMZALYXVBWFCRQUONTSPIKHGD", "YRUHQSLDPXNGOKMIEBFZCWVJAT",
+                   "FVPJIAOYEDRZXWGCTKUQSBNMHL"]
 NOTCHES = ["R", "F", "W", "K", "A"]
 
 
@@ -29,9 +29,9 @@ class Roll:
         self.output_roll = set_position(self.output_roll, 1)
 
 
-class Ukw_roll:
+class Reversing_roll:
     def __init__(self, chosen_roll):
-        self.input_roll = list(UKW[chosen_roll])
+        self.input_roll = list(REVERSING_ROLLS[chosen_roll])
         self.output_roll = list(OUTPUT_ROLLS)
 
 
