@@ -14,6 +14,9 @@ ROLL_LEFT = 0
 ROLL_LEFT_POS = 0
 ROLL_REVERSE = 1
 
+PEGBOARD = [("C", "R"), ("P", "V"), ("A", "I"), ("D", "K"), ("O", "T"),
+            ("M", "Q"), ("E", "U"), ("B", "X"), ("L", "N"), ("G", "J")]
+
 
 def set_position(roll_list, turn):
     return roll_list[turn:] + roll_list[:turn]
@@ -29,13 +32,14 @@ def int_to_char(number):
 
 class Enigma:
     def __init__(self, roll_right, roll_right_pos, roll_middle, roll_middle_pos, roll_left, roll_left_pos,
-                 reverse_roll):
+                 reverse_roll, pegboard):
         self.rolls = [Roll(roll_right, roll_right_pos), Roll(roll_middle, roll_middle_pos),
                       Roll(roll_left, roll_left_pos)]
         self.reverse_roll = Reversing_roll(reverse_roll)
+        self.pegboard = pegboard
 
     def start(self):
-        input_letter_index = char_to_int(input("Enter a letter: "))
+        input_letter_index = char_to_int(self.pegboard.select_letter(input("Enter a letter: ")))
 
         self.rolls[0].rotate()
         if self.rolls[0].check_notch():
@@ -53,7 +57,8 @@ class Enigma:
         step4 = self.rolls[1].encrypt_right(step3)
         step5 = self.rolls[0].encrypt_right(step4)
 
-        print(int_to_char(step5))
+        res = self.pegboard.select_letter(int_to_char(step5))
+        print(res)
 
 
 class Roll:
@@ -96,7 +101,21 @@ class Reversing_roll:
                 return i
 
 
+class Pegboard:
+    def __init__(self, pegboard):
+        self.pegboard = pegboard
+
+    def select_letter(self, letter):
+        for letter1, letter2 in self.pegboard:
+            if letter.upper() == letter1:
+                return letter2
+            elif letter.upper() == letter2:
+                return letter1
+        return letter.upper()
+
+
 if __name__ == "__main__":
-    enigma = Enigma(ROLL_RIGHT, ROLL_RIGHT_POS, ROLL_MIDDLE, ROLL_MIDDLE_POS, ROLL_LEFT, ROLL_LEFT_POS, ROLL_REVERSE)
+    enigma = Enigma(ROLL_RIGHT, ROLL_RIGHT_POS, ROLL_MIDDLE, ROLL_MIDDLE_POS,
+                    ROLL_LEFT, ROLL_LEFT_POS, ROLL_REVERSE, Pegboard(PEGBOARD))
     while True:
         enigma.start()
