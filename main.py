@@ -14,8 +14,11 @@ ROLL_LEFT = 0
 ROLL_LEFT_POS = 0
 ROLL_REVERSE = 1
 
+"""
 PEGBOARD = [("C", "R"), ("P", "V"), ("A", "I"), ("D", "K"), ("O", "T"),
             ("M", "Q"), ("E", "U"), ("B", "X"), ("L", "N"), ("G", "J")]
+"""
+PEGBOARD = []
 
 
 def set_position(roll_list, turn):
@@ -78,14 +81,14 @@ class Roll:
 
     def encrypt_left(self, letter_index):
         temp = self.input_roll[letter_index]
-        for i in range(26):
-            if temp == self.output_roll[i]:
+        for i, value in enumerate(self.output_roll):
+            if temp == value:
                 return i
 
     def encrypt_right(self, letter_index):
         temp = self.output_roll[letter_index]
-        for i in range(26):
-            if temp == self.input_roll[i]:
+        for i, value in enumerate(self.input_roll):
+            if temp == value:
                 return i
 
 
@@ -96,8 +99,8 @@ class Reversing_roll:
 
     def reverse(self, letter_index):
         temp = self.input_roll[letter_index]
-        for i in range(26):
-            if temp == self.output_roll[i]:
+        for i, value in enumerate(self.output_roll):
+            if temp == value:
                 return i
 
 
