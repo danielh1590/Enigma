@@ -1,5 +1,5 @@
 from components.pegboard import Pegboard
-from components.reversing_roll import Reversing_roll
+from components.reversing_roll import ReversingRoll
 from components.roll import Roll
 
 ROLL_RIGHT = 0
@@ -30,7 +30,7 @@ class Enigma:
                  reverse_roll, pegboard):
         self.rolls = [Roll(roll_right, roll_right_pos), Roll(roll_middle, roll_middle_pos),
                       Roll(roll_left, roll_left_pos)]
-        self.reverse_roll = Reversing_roll(reverse_roll)
+        self.reverse_roll = ReversingRoll(reverse_roll)
         self.pegboard = pegboard
 
     def start(self):

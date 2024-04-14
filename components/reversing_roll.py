@@ -3,7 +3,7 @@ REVERSING_ROLLS = ["EJMZALYXVBWFCRQUONTSPIKHGD", "YRUHQSLDPXNGOKMIEBFZCWVJAT",
 OUTPUT_ROLLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
-class Reversing_roll:
+class ReversingRoll:
     def __init__(self, chosen_roll):
         self.input_roll = list(REVERSING_ROLLS[chosen_roll])
         self.output_roll = list(OUTPUT_ROLLS)
