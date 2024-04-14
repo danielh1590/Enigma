@@ -1,6 +1,6 @@
-from components.pegboard import Pegboard
-from components.reversing_roll import ReversingRoll
-from components.roll import Roll
+from src.enigma.pegboard import Pegboard
+from src.enigma.reversing_roll import ReversingRoll
+from src.enigma.roll import Roll
 
 ROLL_RIGHT = 0
 ROLL_RIGHT_POS = 0
