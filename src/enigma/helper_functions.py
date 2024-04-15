@@ -28,3 +28,10 @@ def get_rev_rotor(rotor_str):
             return 1
         case "Reversing Rotor C":
             return 2
+
+
+def set_pegboard(pegboard_str):
+    pairs = pegboard_str.split()
+    pegboard = [(pair[0], pair[1]) for pair in pairs if len(pair) == 2]
+
+    return pegboard
